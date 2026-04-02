@@ -1,0 +1,51 @@
+managed implementation in class ZBP_R_MTOK_T_TASK unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_MTOK_T_TASK alias ZrMtokTTask
+persistent table ZMTOK_T_TASK
+extensible
+draft table ZMTOK_T_TASK_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   TaskID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   TaskID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZMTOK_T_TASK corresponding extensible
+  {
+    TaskID = TASK_ID;
+    Title = TITLE;
+    Description = DESCRIPTION;
+    Status = STATUS;
+    Priority = PRIORITY;
+    DueDate = DUE_DATE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+
+  }
+
+}
