@@ -3,49 +3,55 @@ strict ( 2 );
 with draft;
 extensible;
 define behavior for ZR_MTOK_T_TASK alias ZrMtokTTask
-persistent table ZMTOK_T_TASK
+persistent table zmtok_t_task
 extensible
-draft table ZMTOK_T_TASK_D
+draft table zmtok_t_task_d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master( global )
+authorization master ( global )
 {
   field ( readonly )
-   TaskID,
-   CreatedBy,
-   CreatedAt,
-   LastChangedBy,
-   LastChangedAt,
-   LocalLastChangedAt;
+  TaskID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
 
   field ( numbering : managed )
-   TaskID;
+  TaskID;
 
 
   create;
   update;
   delete;
 
+
+  action setStatusDone result [1] $self;
+  action setStatusOpen result [1] $self;
+  action setStatusWorking result [1] $self;
+
+  validation validateDescription on save { create; update; field Description; }
+  determination calculateDefaultValues on modify { create; }
   draft action Activate optimized;
   draft action Discard;
   draft action Edit;
   draft action Resume;
   draft determine action Prepare;
 
-  mapping for ZMTOK_T_TASK corresponding extensible
-  {
-    TaskID = TASK_ID;
-    Title = TITLE;
-    Description = DESCRIPTION;
-    Status = STATUS;
-    Priority = PRIORITY;
-    DueDate = DUE_DATE;
-    CreatedBy = CREATED_BY;
-    CreatedAt = CREATED_AT;
-    LastChangedBy = LAST_CHANGED_BY;
-    LastChangedAt = LAST_CHANGED_AT;
-    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
-
-  }
+  mapping for zmtok_t_task corresponding extensible
+    {
+      TaskID             = TASK_ID;
+      Title              = TITLE;
+      Description        = DESCRIPTION;
+      Status             = STATUS;
+      Priority           = PRIORITY;
+      DueDate            = DUE_DATE;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
 
 }
