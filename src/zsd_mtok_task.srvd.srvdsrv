@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service ZSD_MTOK_TASK {
+  expose ZC_MTOK_T_TASK;
+  expose ZC_MTOK_T_SUBTASK;
+}

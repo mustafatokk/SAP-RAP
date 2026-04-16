@@ -4,8 +4,8 @@
   <asx:values>
    <DDLX>
     <METADATA>
-     <NAME>ZC_MTOK_T_TASK</NAME>
-     <DESCRIPTION>Metadata Extension for ZC_MTOK_T_TASK</DESCRIPTION>
+     <NAME>ZUI_MTOK_T_SUBTASK</NAME>
+     <DESCRIPTION>Metadata Ext. Subtask</DESCRIPTION>
      <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
     </METADATA>
    </DDLX>

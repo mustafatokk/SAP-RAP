@@ -1,6 +1,0 @@
-@EndUserText.label: 'ZR_MTOK_T_TASK'
-@MappingRole: true
-define role ZR_MTOK_T_TASK {
-  grant select on ZR_MTOK_T_TASK
-  where TRUE;
-}

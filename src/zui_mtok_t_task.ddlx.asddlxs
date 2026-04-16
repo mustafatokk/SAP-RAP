@@ -1,0 +1,73 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName:        'Task',
+    typeNamePlural:  'Tasks List',
+    title: {
+      type:  #STANDARD,
+      label: 'Billing Document',
+      value: 'TaskID'
+    }
+  }
+}
+annotate entity ZC_MTOK_T_TASK with
+{
+  @UI.facet: [
+  {
+    id:       'Tasks',
+    purpose:  #STANDARD,
+    type:     #IDENTIFICATION_REFERENCE,
+    label:    'Tasks',
+    position: 10
+  },
+  {
+    id:            'Subtask',
+    purpose:       #STANDARD,
+    type:          #LINEITEM_REFERENCE,
+    label:         'Subtasks',
+    position:      20,
+    targetElement: '_subtask'
+  }
+  ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI: { identification: [ { position: 10 } ], identification: [{label: 'Task ID'}] }
+  TaskID;
+  @UI.lineItem:  [ { position: 20 } ]
+  @UI: { identification: [ { position: 20 } ],identification: [{label: 'Title'}] }
+  Title;
+  @UI.lineItem:  [ { position: 30 } ]
+  @UI: { identification: [ { position: 30 } ],identification: [{label: 'Description'}] }
+  Description;
+  @UI.lineItem:  [ { position: 40, label: 'Status', criticality: 'StatusCriticality' } ]
+  @UI.identification: [ { position: 40, label: 'Status', criticality: 'StatusCriticality' } ]
+  Status;
+  @UI.lineItem:  [ { hidden: true } ]
+  @UI.identification: [ { hidden: true } ]
+  StatusCriticality;
+  @UI.lineItem:  [ { position: 60 } ]
+  @UI: { identification: [ { position: 60 } ], identification: [{label: 'Priority'}] }
+  Priority;
+  @UI.lineItem:  [ { position: 70 } ]
+  @UI: { identification: [ { position: 70 } ], identification: [{label: 'Due Date'}] }
+  DueDate;
+  @UI.lineItem:  [ { position: 80 } ]
+  @UI: { identification: [ { position: 80 } ], identification: [{label: 'Created By'}] }
+  CreatedBy;
+  @UI.lineItem:  [ { position: 90 } ]
+  @UI: { identification: [ { position: 90 } ], identification: [{label: 'Created At'}] }
+  CreatedAt;
+  @UI.lineItem:  [ { position: 100 } ]
+  @UI: { identification: [ { position: 100 } ], identification: [{label: 'Last Changed By'}] }
+  LastChangedBy;
+  @UI.lineItem:  [ { position: 110 } ]
+  @UI: { identification: [ { position: 110 } ], identification: [{label: 'Last Changed At'}] }
+  LastChangedAt;
+  @UI.lineItem:  [ { position: 120 } ]
+  @UI: { identification: [ { position: 120 } ], identification: [{label: 'Local Last Changed At'}] }
+  LocalLastChangedAt;
+  @UI.lineItem:  [ { position: 130 } ]
+  @UI: { identification: [ { position: 130 } ] }
+  /* Associations */
+  _subtask;
+
+}

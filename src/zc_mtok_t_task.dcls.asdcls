@@ -1,6 +1,0 @@
-@EndUserText.label: 'ZC_MTOK_T_TASK'
-@MappingRole: true
-define role ZC_MTOK_T_TASK {
-  grant select on ZC_MTOK_T_TASK
-  where INHERITING CONDITIONS FROM ENTITY ZR_MTOK_T_TASK REPLACING { ROOT WITH _BaseEntity };
-}

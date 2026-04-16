@@ -1,9 +1,10 @@
-@AccessControl.authorizationCheck: #MANDATORY
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 @Metadata.allowExtensions: true
 @ObjectModel.sapObjectNodeType.name: 'ZMTOK_T_TASK'
-@EndUserText.label: '###GENERATED Core Data Service Entity'
+@EndUserText.label: 'Task Base View'
 define root view entity ZR_MTOK_T_TASK
   as select from zmtok_t_task
+
 {
   key task_id               as TaskID,
       title                 as Title,

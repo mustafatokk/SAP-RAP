@@ -6,21 +6,18 @@
 @ObjectModel: {
   sapObjectNodeType.name: 'ZMTOK_T_TASK'
 }
-@AccessControl.authorizationCheck: #MANDATORY
+@AccessControl.authorizationCheck:#NOT_REQUIRED
 define root view entity ZC_MTOK_T_TASK
   provider contract transactional_query
-  as projection on ZR_MTOK_T_TASK
-  association [1..1] to ZR_MTOK_T_TASK as _BaseEntity on $projection.TaskID = _BaseEntity.TaskID
+  as projection on ZI_MTOK_T_TASK
+  //association [1..1] to ZR_MTOK_T_TASK as _BaseEntity on $projection.TaskID = _BaseEntity.TaskID
 {
   key TaskID,
       Title,
       Description,
 
-      @UI.identification: [ { position: 10 } ]
-      @UI.lineItem: [{ position: 20, label: 'Status' }]
-
-      Status,
-      @UI.hidden: true // Bu alanı ekranda sayı olarak görmemize gerek yok, sadece renk versin.
+     
+      Status,      
       StatusCriticality,
       Priority,
       DueDate,
@@ -44,5 +41,5 @@ define root view entity ZC_MTOK_T_TASK
         systemDateTime.localInstanceLastChangedAt: true
       }
       LocalLastChangedAt,
-      _BaseEntity
+      _subtask : redirected to composition child ZC_MTOK_T_SUBTASK
 }

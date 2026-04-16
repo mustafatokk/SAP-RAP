@@ -1,0 +1,70 @@
+managed implementation in class zbp_i_mtok_t_task unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_MTOK_T_TASK
+persistent table zmtok_t_task
+draft table zmtok_t_task_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+{
+
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+
+  draft determine action Prepare;
+
+
+
+  field ( readonly, numbering : managed ) TaskID;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedAt;
+  association _subtask { create; with draft; }
+  mapping for zmtok_t_task corresponding
+    {
+      CreatedAt          = created_at;
+      CreatedBy          = created_by;
+      Description        = description;
+      DueDate            = due_date;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      Priority           = priority;
+      Status             = status;
+      TaskID             = task_id;
+      Title              = title;
+    }
+}
+
+define behavior for ZI_MTOK_T_SUBTASK alias subtask
+persistent table zmtok_t_subtask
+lock dependent by _parent
+authorization dependent by _parent
+etag master LastChangedAt
+draft table zmtok_t_subtaskd
+{ update;
+  delete;
+  field ( readonly ) TaskID;
+  field ( readonly, numbering : managed ) SubtaskID;
+  association _parent;
+  mapping for zmtok_t_subtask corresponding
+    {
+      CreatedAt          = created_at;
+      CreatedBy          = created_by;
+      Description        = description;
+      DueDate            = due_date;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      Priority           = priority;
+      Status             = status;
+      SubtaskID          = subtask_id;
+      TaskID             = task_id;
+    }
+}

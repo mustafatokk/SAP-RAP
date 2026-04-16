@@ -1,0 +1,45 @@
+@Metadata.layer: #CORE
+annotate entity ZC_MTOK_T_SUBTASK with
+{
+  @UI.facet: [ {
+  id:       'BillingDocItem',
+  purpose:  #STANDARD,
+  type:     #IDENTIFICATION_REFERENCE,
+  label:    'Item',
+  position: 10
+  }]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI: { identification: [ { position: 20 , label: 'Task ID' } ] }
+  TaskID;
+  @UI.lineItem: [ { position: 20 } ]
+  @UI: { identification: [ { position: 30, label: 'Subtask ID' } ] }
+  SubtaskID;
+  @UI.lineItem: [ { position: 30 } ]
+  @UI: { identification: [ { position: 40, label: 'Description' } ] }
+  Description;
+  @UI.lineItem: [ { position: 40 } ]
+  @UI: { identification: [ { position: 50 , label: 'Staus' } ] }
+  Status;
+  @UI.lineItem: [ { position: 50 } ]
+  @UI: { identification: [ { position: 60 , label: 'Priority' } ] }
+  Priority;
+  @UI.lineItem: [ { position: 60 } ]
+  @UI: { identification: [ { position: 70, label: 'Due Date' } ] }
+  DueDate;
+  @UI.lineItem: [ { position: 70 } ]
+  @UI: { identification: [ { position: 80 , label: 'CreatedBy' } ] }
+  CreatedBy;
+  @UI.lineItem: [ { position: 80 } ]
+  @UI: { identification: [ { position: 90, label : 'Created At' } ] }
+  CreatedAt;
+  @UI.lineItem: [ { position: 90 } ]
+  @UI: { identification: [ { position: 100 , label: 'LastChangeby'} ] }
+  LastChangedBy;
+  @UI.lineItem: [ { position: 100 } ]
+  @UI: { identification: [ { position: 110,label: 'LastChanged At' } ] }
+  LastChangedAt;
+  @UI.lineItem: [ { position: 110 } ]
+  @UI: { identification: [ { position: 120, label: 'Local Last Changed At' } ] }
+  LocalLastChangedAt;
+
+}

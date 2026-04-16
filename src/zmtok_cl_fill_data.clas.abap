@@ -17,5 +17,8 @@ CLASS zmtok_cl_fill_data IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
     DELETE FROM zmtok_t_task.
+    DELETE FROM zmtok_t_task_d.
+    DELETE FROM zmtok_t_subtask.
+    DELETE FROM zmtok_t_subtaskd.
   ENDMETHOD.
 ENDCLASS.
